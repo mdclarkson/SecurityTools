@@ -126,8 +126,7 @@ def main(argv):
         i=0;
         findings = list()
         for line in lines:
-            m=re.match(finding_regexp,line)
-            if m is not None:
+            if (m := re.match(finding_regexp,line)) is not None:
                 if DEBUG:
                     #TODO : check the CWE from securityscancode, see PR #185 at https://github.com/security-code-scan/security-code-scan/pull/185
                     print (json.dumps ([i,
