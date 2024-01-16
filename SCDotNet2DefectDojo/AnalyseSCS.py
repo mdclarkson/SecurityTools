@@ -51,7 +51,7 @@ def send2defect(findings, DD_URL, DD_ENG, DD_API):
     }
     try:
         print("Create Test")
-        r = requests.post(test_URL, headers=headers, verify=True, data=json.dumps(payload))
+        r = requests.post(test_URL, headers=headers, verify=True, data=json.dumps(payload), timeout=60)
         test_id = json.loads(r.content)['id']
         r.close()
         print("Test sucessfully created")
@@ -91,7 +91,7 @@ def send2defect(findings, DD_URL, DD_ENG, DD_API):
 
 
         try:
-            r = requests.post(findings_URL, headers=headers, verify=True, data=json.dumps(payload))
+            r = requests.post(findings_URL, headers=headers, verify=True, data=json.dumps(payload), timeout=60)
             if DEBUG:
                 print (json.dumps (payload))
                 print (r.status_code)
